@@ -1,20 +1,72 @@
 import { Link } from "react-router-dom"
-
+import './Home.css'
 
 function Home() {
     return (
-      <>
-        <h1>Home</h1>
-        <p>
-            The introduction page. gonna include card components of the 6 charcters with links to them.
-        </p>
-        <Link to="/tony-stark" >Tony Stark</Link> <br />
-        <Link to="/jensen-huang" >Jensen Huang</Link> <br />
-        <Link to="/manmohan-singh" >Manmohan Singh</Link> <br />
-        <Link to="/hedy-lamarr" >Hedy Lamarr</Link> <br />
-        <Link to="/marie-curie" >Marie Curie</Link> <br />
-        <Link to="/princess-diana" >Princess Diana</Link> <br />
-      </>
+      <div className="home-container">
+        <section className="intro-section">
+          <h1>What Would Your Role Model Do?</h1>
+          <p>
+            WWYRD is an interactive decision-making assistant inspired by iconic role models. 
+            Whether you are trying to solve a problem or need guidance, WWYRD channels the 
+            wisdom and humor of your favorite role models to help you navigate life&apos;s challenges.
+          </p>
+          <p>
+            Choose your role model below and get personalized, witty responses that reflect 
+            their unique personalities and outlooks on life.
+          </p>
+        </section>
+
+        <section className="cards-grid">
+          <Link to="/tony-stark" className="card" style={{'--order': 1}}>
+            <img src="/images/tony stark.jpg" alt="Tony Stark" />
+            <div className="card-content">
+              <h2>Tony Stark</h2>
+              <p>Innovative genius, charismatic leader, and visionary inventor</p>
+            </div>
+          </Link>
+
+          <Link to="/jensen-huang" className="card" style={{'--order': 2}}>
+            <img src="/images/Jensen.jpg" alt="Jensen Huang" />
+            <div className="card-content">
+              <h2>Jensen Huang</h2>
+              <p>Visionary tech leader and pioneer in AI & GPU computing</p>
+            </div>
+          </Link>
+
+          <Link to="/manmohan-singh" className="card" style={{'--order': 3}}>
+            <img src="/images/Manmohan.jpg" alt="Manmohan Singh" />
+            <div className="card-content">
+              <h2>Manmohan Singh</h2>
+              <p>Economist and reformer who transformed India&apos;s economy</p>
+            </div>
+          </Link>
+
+          <Link to="/hedy-lamarr" className="card" style={{'--order': 4}}>
+            <img src="/images/Hedy.jpg" alt="Hedy Lamarr" />
+            <div className="card-content">
+              <h2>Hedy Lamarr</h2>
+              <p>Inventor and actress who pioneered wireless communications</p>
+            </div>
+          </Link>
+
+          <Link to="/marie-curie" className="card" style={{'--order': 5}}>
+            <img src="/images/Curie.jpg" alt="Marie Curie" />
+            <div className="card-content">
+              <h2>Marie Curie</h2>
+              <p>Pioneering physicist and chemist, double Nobel Prize winner</p>
+            </div>
+          </Link>
+
+          <Link to="/princess-diana" className="card" style={{'--order': 6}}>
+            <img src="/images/princess diana.jpg" alt="Princess Diana" />
+            <div className="card-content">
+              <h2>Princess Diana</h2>
+              <p>Humanitarian icon known for compassion and advocacy</p>
+            </div>
+          </Link>
+        </section>
+      </div>
     )
   }
   

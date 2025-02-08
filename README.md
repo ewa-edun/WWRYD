@@ -40,6 +40,9 @@ This project is built for Global Hack Week: AI/ML, and it aligns with the follow
 3️⃣ Hack with GenAI – WWYRD leverages LLMs (like OpenAI, Anthropic, or Hugging Face) to generate high-quality, witty, and insightful role model responses.
 4️⃣ Implement Login and Logout with Auth0 – Users can sign in and manage their profile via Auth0 authentication.
 5️⃣ Customize your login box – Personalizing the login experience to match the WWYRD theme.
+6️⃣ Build your first recommendation system: Follow the building a recommendation system track.
+7️⃣ AI for Hackers: Build AI-powered hacks that empower the hacker community!
+8️⃣ Your Pair Programmer: Choose between Windsurf AI or Cursor AI and see how an AI-powered coding assistant can speed up your workflow.
 
 ---
 
