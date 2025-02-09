@@ -49,7 +49,7 @@ function Tony() {
               <div key={index} className={`message-wrapper ${message.sender}`}>
                 {message.sender === "tony" && (
                   <img 
-                    src="../components/tony stark.jpg" 
+                    src="/src/images/iron man.jpg" 
                     alt="Tony Stark" 
                     className="avatar tony-avatar"
                   />

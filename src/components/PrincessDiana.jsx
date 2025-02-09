@@ -48,7 +48,7 @@ function Diana() {
               <div key={index} className={`message-wrapper ${message.sender}`}>
                 {message.sender === "diana" && (
                   <img 
-                    src="/images/princess diana.jpg" 
+                    src="/src/images/of wales.jpg" 
                     alt="Princess Diana" 
                     className="avatar diana-avatar"
                   />

@@ -48,7 +48,7 @@ function Jensen() {
               <div key={index} className={`message-wrapper ${message.sender}`}>
                 {message.sender === "jensen" && (
                   <img 
-                    src="/images/Jensen.jpg" 
+                    src="/src/images/Jensen.jpg" 
                     alt="Jensen Huang" 
                     className="avatar jensen-avatar"
                   />

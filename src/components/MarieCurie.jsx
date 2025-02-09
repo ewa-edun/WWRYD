@@ -48,7 +48,7 @@ function Marie() {
               <div key={index} className={`message-wrapper ${message.sender}`}>
                 {message.sender === "marie" && (
                   <img 
-                    src="/images/Marie.jpg" 
+                    src="/src/images/Marie.jpg" 
                     alt="Marie Curie" 
                     className="avatar marie-avatar"
                   />
