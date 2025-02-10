@@ -37,7 +37,7 @@
 .chat-container {
   max-width: 900px;
   margin: 0 auto;
-  background: #191919;
+  background:rgba(0, 255, 127, 0.3);
   border-radius: 15px;
   border: 1px solid #D4AF37;
   box-shadow: 0 10px 30px rgba(0, 255, 127, 0.1);

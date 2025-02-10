@@ -4,6 +4,13 @@ import './Home.css'
 function Home() {
     return (
       <div className="home-container">
+        <nav className="home-nav">
+          <div className="auth-buttons">
+            <Link to="/signin" className="auth-button">Sign In</Link>
+            <Link to="/login" className="auth-button">Login</Link>
+          </div>
+        </nav>
+
         <section className="intro-section">
           <h1>What Would Your Role Model Do?</h1>
           <p>
