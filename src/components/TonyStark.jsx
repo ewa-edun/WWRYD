@@ -66,7 +66,7 @@ function Tony() {
                         <div key={index} className={`message-wrapper ${message.sender}`}>
                             {message.sender === "tony" && (
                                 <img 
-                                    src="/src/images/iron man.jpg" 
+                                    src="/iron man.jpg" 
                                     alt="Tony Stark" 
                                     className="avatar tony-avatar"
                                 />
@@ -104,4 +104,4 @@ function Tony() {
     );
 }
 
-export default Tony
+export default Tony

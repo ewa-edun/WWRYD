@@ -68,7 +68,7 @@ function Marie() {
                         <div key={index} className={`message-wrapper ${message.sender}`}>
                             {message.sender === "marie" && (
                                 <img 
-                                    src="/src/images/Marie.jpg" 
+                                    src="/Marie.jpg" 
                                     alt="Marie Curie" 
                                     className="avatar marie-avatar"
                                 />
@@ -106,4 +106,4 @@ function Marie() {
     );
 }
 
-export default Marie
+export default Marie

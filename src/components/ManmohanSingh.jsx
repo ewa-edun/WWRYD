@@ -68,7 +68,7 @@ function Singh() {
                         <div key={index} className={`message-wrapper ${message.sender}`}>
                             {message.sender === "manmohan" && (
                                 <img 
-                                    src="/src/images/Manmohan.jpg" 
+                                    src="/Manmohan.jpg" 
                                     alt="Manmohan Singh" 
                                     className="avatar manmohan-avatar"
                                 />
@@ -106,4 +106,4 @@ function Singh() {
     );
 }
 
-export default Singh
+export default Singh

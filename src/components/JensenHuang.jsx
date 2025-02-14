@@ -68,7 +68,7 @@ function Jensen() {
                         <div key={index} className={`message-wrapper ${message.sender}`}>
                             {message.sender === "jensen" && (
                                 <img 
-                                    src="/src/images/Jensen.jpg" 
+                                    src="/Jensen.jpg" 
                                     alt="Jensen Huang" 
                                     className="avatar jensen-avatar"
                                 />
@@ -106,4 +106,4 @@ function Jensen() {
     );
 }
 
-export default Jensen
+export default Jensen

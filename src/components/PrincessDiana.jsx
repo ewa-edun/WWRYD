@@ -68,7 +68,7 @@ function Diana() {
                         <div key={index} className={`message-wrapper ${message.sender}`}>
                             {message.sender === "diana" && (
                                 <img 
-                                    src="/src/images/of wales.jpg" 
+                                    src="/of wales.jpg" 
                                     alt="Princess Diana" 
                                     className="avatar diana-avatar"
                                 />
@@ -106,4 +106,4 @@ function Diana() {
     );
 }
 
-export default Diana
+export default Diana

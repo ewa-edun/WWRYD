@@ -40,7 +40,7 @@ function Home() {
 
         <section className="cards-grid">
           <Link to="/tony-stark" className="card" style={{'--order': 1}}>
-            <img src="/src/images/tony stark.jpg" alt="Tony Stark" />
+            <img src="/tony stark.jpg" alt="Tony Stark" />
             <div className="card-content">
               <h2>Tony Stark</h2>
               <p>Innovative genius, charismatic leader, and visionary inventor</p>
@@ -48,7 +48,7 @@ function Home() {
           </Link>
 
           <Link to="/jensen-huang" className="card" style={{'--order': 2}}>
-            <img src="/src/images/Jensen.jpg" alt="Jensen Huang" />
+            <img src="/Jensen.jpg" alt="Jensen Huang" />
             <div className="card-content">
               <h2>Jensen Huang</h2>
               <p>Visionary tech leader and pioneer in AI & GPU computing</p>
@@ -56,7 +56,7 @@ function Home() {
           </Link>
 
           <Link to="/manmohan-singh" className="card" style={{'--order': 3}}>
-            <img src="/src/images/Manmohan.jpg" alt="Manmohan Singh" />
+            <img src="/Manmohan.jpg" alt="Manmohan Singh" />
             <div className="card-content">
               <h2>Manmohan Singh</h2>
               <p>Economist and reformer who transformed India&apos;s economy</p>
@@ -64,7 +64,7 @@ function Home() {
           </Link>
 
           <Link to="/hedy-lamarr" className="card" style={{'--order': 4}}>
-            <img src="/src/images/Hedy.jpg" alt="Hedy Lamarr" />
+            <img src="/Hedy.jpg" alt="Hedy Lamarr" />
             <div className="card-content">
               <h2>Hedy Lamarr</h2>
               <p>Inventor and actress who pioneered wireless communications</p>
@@ -72,7 +72,7 @@ function Home() {
           </Link>
 
           <Link to="/marie-curie" className="card" style={{'--order': 5}}>
-            <img src="/src/images/Curie.jpg" alt="Marie Curie" />
+            <img src="/Curie.jpg" alt="Marie Curie" />
             <div className="card-content">
               <h2>Marie Curie</h2>
               <p>Pioneering physicist and chemist, double Nobel Prize winner</p>
@@ -80,7 +80,7 @@ function Home() {
           </Link>
 
           <Link to="/princess-diana" className="card" style={{'--order': 6}}>
-            <img src="/src/images/princess diana.jpg" alt="Princess Diana" />
+            <img src="/princess diana.jpg" alt="Princess Diana" />
             <div className="card-content">
               <h2>Princess Diana</h2>
               <p>Humanitarian icon known for compassion and advocacy</p>
@@ -91,4 +91,4 @@ function Home() {
     )
 }
 
-export default Home
+export default Home

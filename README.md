@@ -189,7 +189,7 @@ In total 7 pages.
         - **Rasa**: If you want more control over the conversational aspects and want to handle the dialogue yourself.
         - VADER/TextBlob (for sentiment analysis)
 - Database: SQLite
-- Authentication: Auth0
+- Authentication: FireBase
    
 ---
 

@@ -68,7 +68,7 @@ function Hedy() {
                         <div key={index} className={`message-wrapper ${message.sender}`}>
                             {message.sender === "hedy" && (
                                 <img 
-                                    src="/src/images/Lamarr.jpg" 
+                                    src="/Lamarr.jpg" 
                                     alt="Hedy Lamarr" 
                                     className="avatar hedy-avatar"
                                 />
@@ -106,4 +106,4 @@ function Hedy() {
     );
 }
 
-export default Hedy
+export default Hedy
