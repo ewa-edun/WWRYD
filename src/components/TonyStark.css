@@ -1,6 +1,6 @@
 .tony-page {
   min-height: 100vh;
-  background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+  background: linear-gradient(135deg,rgb(50, 23, 23),rgb(41, 8, 8));
   padding: 20px;
 }
 
@@ -16,14 +16,14 @@
 }
 
 .home-link {
-  color: #FBBA00;
+  color: #fbba00;
   text-decoration: none;
   font-weight: 500;
   transition: color 0.3s ease;
 }
 
 .home-link:hover {
-  color: #A7A9AC;
+  color: #413310
 }
 
 .tony-nav h1 {
@@ -36,7 +36,7 @@
 .chat-container {
   max-width: 900px;
   margin: 0 auto;
-  
+  background: #A71930;
   border-radius: 15px;
   border: 1px solid #FBBA00;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);

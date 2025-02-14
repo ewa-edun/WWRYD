@@ -1,6 +1,6 @@
 .hedy-page {
   min-height: 100vh;
-  background: linear-gradient(135deg,rgb(112, 13, 11),rgb(38, 3, 3));
+  background: linear-gradient(135deg,rgb(70, 5, 4),rgb(31, 1, 1));
   padding: 20px;
 }
 
@@ -37,10 +37,10 @@
 .chat-container {
   max-width: 900px;
   margin: 0 auto;
-  background: #FFFFFF;
+  background: rgb(70, 5, 4);
   border-radius: 15px;
   border: 1px solid #FFD700;
-  box-shadow: 0 10px 30px rgba(59, 47, 47, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   overflow: hidden;
 }
 

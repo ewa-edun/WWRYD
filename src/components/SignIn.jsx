@@ -1,5 +1,7 @@
 import { Link, useNavigate } from "react-router-dom"
 import { useState } from "react"
+import { auth } from "../firebase"
+import { createUserWithEmailAndPassword } from "firebase/auth"
 import "./Auth.css"
 
 function SignIn() {
@@ -11,6 +13,7 @@ function SignIn() {
         confirmPassword: ''
     });
     const [error, setError] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
 
     const handleChange = (e) => {
         setFormData({
@@ -19,15 +22,33 @@ function SignIn() {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         if (formData.password !== formData.confirmPassword) {
             setError('Passwords do not match');
             return;
         }
-        // Here you would typically make an API call to register the user
-        console.log('Sign in data:', formData);
-        navigate('/'); // Redirect to home after successful sign-in
+        
+        setIsLoading(true);
+        setError('');
+        
+        try {
+            const userCredential = await createUserWithEmailAndPassword(
+                auth,
+                formData.email,
+                formData.password
+            );
+            const user = userCredential.user;
+            // Get the Firebase ID token
+            const token = await user.getIdToken();
+            // Store the token for API calls
+            localStorage.setItem('token', token);
+            navigate('/');
+        } catch (err) {
+            setError(err.message || 'Failed to create account');
+        } finally {
+            setIsLoading(false);
+        }
     };
 
     return (
@@ -80,7 +101,9 @@ function SignIn() {
                         />
                     </div>
                     {error && <div className="error-message">{error}</div>}
-                    <button type="submit" className="auth-submit">Sign In</button>
+                    <button type="submit" className="auth-submit" disabled={isLoading}>
+                        {isLoading ? 'Creating Account...' : 'Sign In'}
+                    </button>
                 </form>
                 <p className="auth-switch">
                     Already have an account? <Link to="/login">Login</Link>

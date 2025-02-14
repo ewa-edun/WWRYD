@@ -1,5 +1,7 @@
 import { Link, useNavigate } from "react-router-dom"
 import { useState } from "react"
+import { auth } from "../firebase"
+import { signInWithEmailAndPassword } from "firebase/auth"
 import "./Auth.css"
 
 function Login() {
@@ -9,6 +11,7 @@ function Login() {
         password: ''
     });
     const [error, setError] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
 
     const handleChange = (e) => {
         setFormData({
@@ -17,11 +20,28 @@ function Login() {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // Here you would typically make an API call to authenticate the user
-        console.log('Login data:', formData);
-        navigate('/'); // Redirect to home after successful login
+        setIsLoading(true);
+        setError('');
+        
+        try {
+            const userCredential = await signInWithEmailAndPassword(
+                auth,
+                formData.email,
+                formData.password
+            );
+            const user = userCredential.user;
+            // Get the Firebase ID token
+            const token = await user.getIdToken();
+            // Store the token for API calls
+            localStorage.setItem('token', token);
+            navigate('/');
+        } catch (err) {
+            setError(err.message || 'Failed to login');
+        } finally {
+            setIsLoading(false);
+        }
     };
 
     return (
@@ -52,7 +72,9 @@ function Login() {
                         />
                     </div>
                     {error && <div className="error-message">{error}</div>}
-                    <button type="submit" className="auth-submit">Login</button>
+                    <button type="submit" className="auth-submit" disabled={isLoading}>
+                        {isLoading ? 'Logging in...' : 'Login'}
+                    </button>
                 </form>
                 <p className="auth-switch">
                     Don't have an account? <Link to="/signin">Sign In</Link>

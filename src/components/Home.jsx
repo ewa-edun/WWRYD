@@ -1,13 +1,27 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import './Home.css'
 
 function Home() {
+    const navigate = useNavigate();
+    const isAuthenticated = !!localStorage.getItem('token');
+
+    const handleLogout = () => {
+        localStorage.removeItem('token');
+        navigate('/login');
+    };
+
     return (
       <div className="home-container">
         <nav className="home-nav">
           <div className="auth-buttons">
-            <Link to="/signin" className="auth-button">Sign In</Link>
-            <Link to="/login" className="auth-button">Login</Link>
+            {isAuthenticated ? (
+              <button onClick={handleLogout} className="auth-button">Logout</button>
+            ) : (
+              <>
+                <Link to="/signin" className="auth-button">Sign In</Link>
+                <Link to="/login" className="auth-button">Login</Link>
+              </>
+            )}
           </div>
         </nav>
 
@@ -75,6 +89,6 @@ function Home() {
         </section>
       </div>
     )
-  }
-  
-  export default Home
+}
+
+export default Home
