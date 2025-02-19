@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom"
 import { useState } from "react"
-import { auth } from "../firebase"
-import { createUserWithEmailAndPassword } from "firebase/auth"
+import { auth, googleProvider } from "../firebase"
+import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth"
 import "./Auth.css"
 
 function SignIn() {
@@ -12,6 +12,7 @@ function SignIn() {
         password: '',
         confirmPassword: ''
     });
+
     const [error, setError] = useState('');
     const [isLoading, setIsLoading] = useState(false);
 
@@ -21,6 +22,21 @@ function SignIn() {
             [e.target.name]: e.target.value
         });
     };
+
+    const handleGoogleSignIn = async () => {
+                setIsLoading(true);
+                setError('');
+                try {
+                    const result = await signInWithPopup(auth, googleProvider);
+                    const token = await result.user.getIdToken();
+                    localStorage.setItem('token', token);
+                    navigate('/');
+                } catch (err) {
+                    setError(err.message || 'Failed to sign in with Google');
+                } finally {
+                    setIsLoading(false);
+                }
+            };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -56,17 +72,6 @@ function SignIn() {
             <div className="auth-container">
                 <h1>Create Account</h1>
                 <form onSubmit={handleSubmit} className="auth-form">
-                    <div className="form-group">
-                        <label htmlFor="username">Username</label>
-                        <input
-                            type="text"
-                            id="username"
-                            name="username"
-                            value={formData.username}
-                            onChange={handleChange}
-                            required
-                        />
-                    </div>
                     <div className="form-group">
                         <label htmlFor="email">Email</label>
                         <input
@@ -104,6 +109,13 @@ function SignIn() {
                     <button type="submit" className="auth-submit" disabled={isLoading}>
                         {isLoading ? 'Creating Account...' : 'Sign In'}
                     </button>
+                    <button 
+                        type="button"
+                        className="google-auth-button" 
+                        onClick={handleGoogleSignIn}
+                    >
+                        Continue with Google
+                    </button>    
                 </form>
                 <p className="auth-switch">
                     Already have an account? <Link to="/login">Login</Link>
@@ -114,4 +126,4 @@ function SignIn() {
     );
 }
 
-export default SignIn
+export default SignIn;

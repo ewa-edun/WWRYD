@@ -160,4 +160,30 @@
     .form-group input {
         padding: 10px;
     }
-} 
+}
+
+.google-auth-button {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    background: white;
+    color: #1a1a1a;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+.google-auth-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+    background: #f8f8f8;
+}
+
+.google-auth-button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
