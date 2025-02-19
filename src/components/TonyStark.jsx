@@ -1,6 +1,8 @@
 import { Link, useNavigate } from "react-router-dom"
 import { useState, useEffect } from "react"
 import { sendChatMessage } from "../utils/api"
+import { db, auth } from "../firebase";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import "./TonyStark.css"
 
 function Tony() {
@@ -21,6 +23,20 @@ function Tony() {
         if (!token) {
             navigate('/login');
         }
+
+        // Test Firestore connection
+        const testFirestore = async () => {
+            try {
+                const user = auth.currentUser;
+                if (user) {
+                    console.log('Connected to Firestore as user:', user.uid);
+                }
+            } catch (error) {
+                console.error('Firestore connection error:', error);
+            }
+        };
+
+        testFirestore();
     }, [navigate]);
 
     const handleSubmit = async (e) => {
@@ -44,6 +60,18 @@ function Tony() {
                     timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
                 };
                 setMessages(prev => [...prev, tonyResponse]);
+
+                // Store the conversation in Firestore
+                const user = auth.currentUser;
+                if (user) {
+                    await addDoc(collection(db, "conversations"), {
+                        userId: user.uid,
+                        roleModel: "Tony Stark",
+                        userMessage: newMessage,
+                        aiResponse: response.reply,
+                        timestamp: serverTimestamp(),
+                    });
+                }
             } catch (error) {
                 console.error('Failed to get response:', error);
                 // Optionally show error to user

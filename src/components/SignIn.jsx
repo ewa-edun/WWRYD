@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom"
 import { useState } from "react"
-import { auth, googleProvider } from "../firebase"
-import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth"
+import { auth } from "../firebase"
+import { createUserWithEmailAndPassword } from "firebase/auth"
 import "./Auth.css"
 
 function SignIn() {
@@ -22,22 +22,8 @@ function SignIn() {
             [e.target.name]: e.target.value
         });
     };
-
-    const handleGoogleSignIn = async () => {
-                setIsLoading(true);
-                setError('');
-                try {
-                    const result = await signInWithPopup(auth, googleProvider);
-                    const token = await result.user.getIdToken();
-                    localStorage.setItem('token', token);
-                    navigate('/');
-                } catch (err) {
-                    setError(err.message || 'Failed to sign in with Google');
-                } finally {
-                    setIsLoading(false);
-                }
-            };
-
+    
+            
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (formData.password !== formData.confirmPassword) {
@@ -70,7 +56,7 @@ function SignIn() {
     return (
         <div className="auth-page">
             <div className="auth-container">
-                <h1>Create Account</h1>
+                <h1>Sign Up</h1>
                 <form onSubmit={handleSubmit} className="auth-form">
                     <div className="form-group">
                         <label htmlFor="email">Email</label>
@@ -107,14 +93,7 @@ function SignIn() {
                     </div>
                     {error && <div className="error-message">{error}</div>}
                     <button type="submit" className="auth-submit" disabled={isLoading}>
-                        {isLoading ? 'Creating Account...' : 'Sign In'}
-                    </button>
-                    <button 
-                        type="button"
-                        className="google-auth-button" 
-                        onClick={handleGoogleSignIn}
-                    >
-                        Continue with Google
+                        {isLoading ? 'Signing Up...' : 'Sign Up'}
                     </button>    
                 </form>
                 <p className="auth-switch">

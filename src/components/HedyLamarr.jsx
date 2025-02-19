@@ -1,6 +1,8 @@
 import { Link, useNavigate } from "react-router-dom"
 import { useState, useEffect } from "react"
 import { sendChatMessage } from "../utils/api"
+import { db, auth } from "../firebase";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import "./HedyLamarr.css"
 
 function Hedy() {
@@ -43,6 +45,18 @@ function Hedy() {
                     timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
                 };
                 setMessages(prev => [...prev, hedyResponse]);
+
+                // Store the conversation in Firestore
+                const user = auth.currentUser;
+                if (user) {
+                    await addDoc(collection(db, "conversations"), {
+                        userId: user.uid,
+                        roleModel: "Hedy Lamarr",
+                        userMessage: newMessage,
+                        aiResponse: response.reply,
+                        timestamp: serverTimestamp(),
+                    });
+                }
             } catch (error) {
                 if (error.message === 'Token is invalid!' || error.message === 'Token is missing!') {
                     localStorage.removeItem('token');

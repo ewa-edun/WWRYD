@@ -18,7 +18,7 @@ function Home() {
               <button onClick={handleLogout} className="auth-button">Logout</button>
             ) : (
               <>
-                <Link to="/signin" className="auth-button">Sign In</Link>
+                <Link to="/signin" className="auth-button">Sign Up</Link>
                 <Link to="/login" className="auth-button">Login</Link>
               </>
             )}
