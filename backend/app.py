@@ -2,13 +2,12 @@ import os
 from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from models import db, User, RoleModel, ChatHistory
-import openai
 from functools import wraps
 import jwt
 from datetime import datetime, timedelta
 from flask_cors import CORS  # Add this import
 import firebase_admin
-from firebase_admin import credentials, auth
+from firebase_admin import credentials, auth, firestore
 
 # Initialize Firebase Admin SDK
 cred = credentials.Certificate('path/to/your/serviceAccountKey.json')
@@ -21,12 +20,8 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = 'your-secret-key'
 db.init_app(app)
 
-# Set your OpenAI API key in your environment variables
-openai.api_key = os.getenv('OPENAI_API_KEY')
 
-# -------------------------
 # Authentication Decorator
-# -------------------------
 def token_required(f):
     @wraps(f)
     def decorated(*args, **kwargs):
@@ -51,10 +46,9 @@ def token_required(f):
         
         return f(current_user, *args, **kwargs)
     return decorated
+db = firestore.client()
 
-# -------------------------
 # Chat API Endpoint
-# -------------------------
 @app.route('/api/chat', methods=['POST'])
 @token_required
 def chat(current_user):
@@ -69,22 +63,6 @@ def chat(current_user):
     if not role_model:
         return jsonify({'message': 'Role model not found'}), 404
 
-    # Build the prompt using the role model's persona information
-    system_prompt = f"You are {role_model.name}. {role_model.description}"
-    user_prompt = user_message
-
-    try:
-        response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",  # You can adjust the model as needed
-            messages=[
-                {"role": "system", "content": system_prompt},
-                {"role": "user", "content": user_prompt},
-            ],
-            max_tokens=150,
-        )
-        reply = response['choices'][0]['message']['content'].strip()
-    except Exception as e:
-        return jsonify({'message': 'Error generating response', 'error': str(e)}), 500
 
     # Store chat history in database
     chat_entry = ChatHistory(
@@ -98,15 +76,12 @@ def chat(current_user):
 
     return jsonify({'reply': reply})
 
-# -------------------------
 # Authentication Endpoints
-# -------------------------
 @app.route('/api/login', methods=['POST'])
 def api_login():
     data = request.get_json()
     email = data.get('email')
     password = data.get('password')
-    # For the sake of example, we are using a dummy check.
     user = User.query.filter_by(email=email).first()
     if user and password == "password":  # Replace with proper password verification
         token = jwt.encode(

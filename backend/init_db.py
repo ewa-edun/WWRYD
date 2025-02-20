@@ -5,7 +5,6 @@ def init_db():
     with app.app_context():
         db.create_all()
         
-        # Create role models if they don't exist
         role_models = [
             {
                 'name': 'Tony Stark',

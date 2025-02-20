@@ -7,14 +7,14 @@ import "./Auth.css"
 function SignIn() {
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
-        username: '',
         email: '',
         password: '',
         confirmPassword: ''
     });
-
     const [error, setError] = useState('');
     const [isLoading, setIsLoading] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
     const handleChange = (e) => {
         setFormData({
@@ -22,8 +22,7 @@ function SignIn() {
             [e.target.name]: e.target.value
         });
     };
-    
-            
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (formData.password !== formData.confirmPassword) {
@@ -41,9 +40,7 @@ function SignIn() {
                 formData.password
             );
             const user = userCredential.user;
-            // Get the Firebase ID token
             const token = await user.getIdToken();
-            // Store the token for API calls
             localStorage.setItem('token', token);
             navigate('/');
         } catch (err) {
@@ -71,25 +68,43 @@ function SignIn() {
                     </div>
                     <div className="form-group">
                         <label htmlFor="password">Password</label>
-                        <input
-                            type="password"
-                            id="password"
-                            name="password"
-                            value={formData.password}
-                            onChange={handleChange}
-                            required
-                        />
+                        <div className="password-input-container">
+                            <input
+                                type={showPassword ? "text" : "password"}
+                                id="password"
+                                name="password"
+                                value={formData.password}
+                                onChange={handleChange}
+                                required
+                            />
+                            <button 
+                                type="button" 
+                                className="password-toggle"
+                                onClick={() => setShowPassword(!showPassword)}
+                            >
+                                {showPassword ? 'Hide' : 'Show'}
+                            </button>
+                        </div>
                     </div>
                     <div className="form-group">
                         <label htmlFor="confirmPassword">Confirm Password</label>
-                        <input
-                            type="password"
-                            id="confirmPassword"
-                            name="confirmPassword"
-                            value={formData.confirmPassword}
-                            onChange={handleChange}
-                            required
-                        />
+                        <div className="password-input-container">
+                            <input
+                                type={showConfirmPassword ? "text" : "password"}
+                                id="confirmPassword"
+                                name="confirmPassword"
+                                value={formData.confirmPassword}
+                                onChange={handleChange}
+                                required
+                            />
+                            <button 
+                                type="button" 
+                                className="password-toggle"
+                                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                            >
+                                {showConfirmPassword ? 'Hide' : 'Show'}
+                            </button>
+                        </div>
                     </div>
                     {error && <div className="error-message">{error}</div>}
                     <button type="submit" className="auth-submit" disabled={isLoading}>

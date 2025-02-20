@@ -47,16 +47,17 @@ function Hedy() {
                 setMessages(prev => [...prev, hedyResponse]);
 
                 // Store the conversation in Firestore
-                const user = auth.currentUser;
-                if (user) {
-                    await addDoc(collection(db, "conversations"), {
-                        userId: user.uid,
-                        roleModel: "Hedy Lamarr",
-                        userMessage: newMessage,
-                        aiResponse: response.reply,
-                        timestamp: serverTimestamp(),
-                    });
-                }
+                                   const user = auth.currentUser;
+                                   if (user) {
+                                       await addDoc(collection(db, "conversations"), {
+                                           userId: user.uid,
+                                           roleModel: "Jensen Huang",
+                                           userMessage: newMessage,
+                                           aiResponse: response.reply,
+                                           timestamp: serverTimestamp(),
+                                       });
+                                   }
+                
             } catch (error) {
                 if (error.message === 'Token is invalid!' || error.message === 'Token is missing!') {
                     localStorage.removeItem('token');

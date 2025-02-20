@@ -12,6 +12,7 @@ function Login() {
     });
     const [error, setError] = useState('');
     const [isLoading, setIsLoading] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
 
     const handleChange = (e) => {
         setFormData({
@@ -32,9 +33,7 @@ function Login() {
                 formData.password
             );
             const user = userCredential.user;
-            // Get the Firebase ID token
             const token = await user.getIdToken();
-            // Store the token for API calls
             localStorage.setItem('token', token);
             navigate('/');
         } catch (err) {
@@ -62,14 +61,23 @@ function Login() {
                     </div>
                     <div className="form-group">
                         <label htmlFor="password">Password</label>
-                        <input
-                            type="password"
-                            id="password"
-                            name="password"
-                            value={formData.password}
-                            onChange={handleChange}
-                            required
-                        />
+                        <div className="password-input-container">
+                            <input
+                                type={showPassword ? "text" : "password"}
+                                id="password"
+                                name="password"
+                                value={formData.password}
+                                onChange={handleChange}
+                                required
+                            />
+                            <button 
+                                type="button" 
+                                className="password-toggle"
+                                onClick={() => setShowPassword(!showPassword)}
+                            >
+                                {showPassword ? 'Hide' : 'Show'}
+                            </button>
+                        </div>
                     </div>
                     {error && <div className="error-message">{error}</div>}
                     <button type="submit" className="auth-submit" disabled={isLoading}>
