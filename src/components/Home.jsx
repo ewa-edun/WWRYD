@@ -15,7 +15,10 @@ function Home() {
         <nav className="home-nav">
           <div className="auth-buttons">
             {isAuthenticated ? (
-              <button onClick={handleLogout} className="auth-button">Logout</button>
+              <>
+                <button onClick={handleLogout} className="auth-button">Logout</button>
+                <Link to="/past-chats" className="auth-button">Past Chats</Link>
+              </>
             ) : (
               <>
                 <Link to="/signin" className="auth-button">Sign Up</Link>

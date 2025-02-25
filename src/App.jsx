@@ -8,6 +8,7 @@ import ManmohanSingh from './components/ManmohanSingh'
 import HedyLamarr from './components/HedyLamarr'
 import MarieCurie from './components/MarieCurie'
 import PrincessDiana from './components/PrincessDiana'
+import PastChats from './components/PastChats'
 import Footer from './components/Footer'
 
 import './App.css'
@@ -16,7 +17,7 @@ function App() {
   return (
     <>
       <Routes>
-      <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/login" element={<Login />} />
         <Route path="/tony-stark" element={<TonyStark />} />
@@ -25,6 +26,7 @@ function App() {
         <Route path="/hedy-lamarr" element={<HedyLamarr />} />
         <Route path="/marie-curie" element={<MarieCurie />} />
         <Route path="/princess-diana" element={<PrincessDiana />} />
+        <Route path="/past-chats" element={<PastChats />} />
       </Routes>
       <Footer />
     </>

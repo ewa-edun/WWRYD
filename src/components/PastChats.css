@@ -1,0 +1,43 @@
+.past-chats-page {
+  padding: 20px;
+  color: #fff;
+  background-color: #000;
+  min-height: 100vh;
+}
+
+.past-chats-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.home-link {
+  color: #D4AF37;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.chats-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.chat-entry {
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  padding: 15px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.chat-header {
+  font-size: 0.9rem;
+  color: #D4AF37;
+  margin-bottom: 10px;
+}
+
+.chat-body p {
+  margin: 5px 0;
+}

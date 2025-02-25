@@ -45,12 +45,14 @@ WWYRD is an interactive decision-making assistant inspired by iconic role models
 
 - **Frontend**:
     - **React**: A JavaScript library for building user interfaces.
-    - **CSS**: Used for styling, including hover effects, animations, and responsiveness.
+    - **Vanilla CSS**: Used for styling, including hover effects, animations, and responsiveness.
 - **Backend**:
-    - **Firebase**: For user authentication and for database to store users previous chats.
+    - **Flask (Python)** to handle API requests.
 - **Natural Language Generation API**:
-    - Gemini 2.0 flash
-        
+    - Gemini 2.0 flash for generating personalized responses.           
+- **Database:** Firebase Cloud Firestore to store user interactions.  
+- **Authentication:** Firebase Authentication for user login/signup.  
+- **Deployment:** Vercel for hosting. 
 ---
 
 ### **Setup Instructions**
