@@ -15,7 +15,6 @@ function PastChats() {
       navigate('/login');
       return;
     }
-    console.log(import.meta.env.VITE_FIREBASE_API_KEY);
 
     const fetchChats = async () => {
       try {
