@@ -46,8 +46,6 @@ WWYRD is an interactive decision-making assistant inspired by iconic role models
 - **Frontend**:
     - **React**: A JavaScript library for building user interfaces.
     - **Vanilla CSS**: Used for styling, including hover effects, animations, and responsiveness.
-- **Backend**:
-    - **Flask (Python)** to handle API requests.
 - **Natural Language Generation API**:
     - Gemini 2.0 flash for generating personalized responses.           
 - **Database:** Firebase Cloud Firestore to store user interactions.  
@@ -81,33 +79,26 @@ cd WWRYD
     ```
     
 
-### 3. **Install Backend Dependencies**
+### 3. **Install Other Dependencies**
 
-- Navigate to the backend folder (if different from frontend) and install Flask:
+- Install firebase, gemini, react-router-dom:
     
     ```bash
     bash
     CopyEdit
-    pip install flask
+    npm install react-router-dom
+    npm install firebase
+    npm install @google/generative-ai
+    npm install @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons @fortawesome/free-regular-svg-icons @fortawesome/react-fontawesome
     
     ```
     
-
 ### 4. **Configure the API Key**
 
-- For the language generation API (Gemini), sign up for an API key and replace the placeholder in the `gemini.js` with your actual key.
+- For the language generation API (Gemini), sign up for an API key and create a .env file in the root directory with gemini and firebsae key.
 
 ### 5. **Run the Application**
-
-- Start the Flask server:
-    
-    ```bash
-    bash
-    CopyEdit
-    python app.py
-    
-    ```
-    
+   
 - Run the React frontend:
     
     ```bash
@@ -116,7 +107,6 @@ cd WWRYD
     npm run dev
     
     ```
-    
 
 Open your browser and go to `http://localhost:5173`.
 
