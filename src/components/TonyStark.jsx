@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom"
 import { useState, useEffect } from "react"
 import { sendChatMessage } from "../utils/api"
-import { db, auth } from "../firebase";
+import { db, auth } from "../utils/firebase";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import "./TonyStark.css"
 

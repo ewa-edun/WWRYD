@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { collection, query, where, orderBy, getDocs } from "firebase/firestore";
-import { db, auth } from "../firebase";
+import { db, auth } from "../utils/firebase";
 import "./PastChats.css";
 
 function PastChats() {
