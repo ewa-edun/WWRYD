@@ -51,7 +51,7 @@ function Hedy() {
                                    if (user) {
                                        await addDoc(collection(db, "conversations"), {
                                            userId: user.uid,
-                                           roleModel: "Jensen Huang",
+                                           roleModel: "Hedy Lamarr",
                                            userMessage: newMessage,
                                            aiResponse: response.reply,
                                            timestamp: serverTimestamp(),

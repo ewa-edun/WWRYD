@@ -6,7 +6,7 @@ export async function generateChatResponse(prompt, roleModel) {
   try {
     const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
 
-    const context = `You are ${roleModel}. Respond in character, maintaining the personality, knowledge, and speaking style of ${roleModel}.`;
+    const context = `You are ${roleModel}. Respond in character, maintaining the personality, knowledge, and speaking style of ${roleModel}. Be true to the tone, values, and thought process of ${roleModel} when offering advice.`;
 
     const result = await model.generateContent(`${context}\nUser: ${prompt}`);
 
