@@ -11,7 +11,6 @@ import PrincessDiana from './components/PrincessDiana'
 import PastChats from './components/PastChats'
 import Footer from './components/Footer'
 
-import './App.css'
 
 function App() {
   return (
